@@ -1,0 +1,1 @@
+Form::textarea('<?php echo $name ?>', $<?php echo $name ?>)

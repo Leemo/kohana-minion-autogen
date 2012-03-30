@@ -1,0 +1,1 @@
+Form::file('<?php echo $name ?>', $<?php echo $name ?>)
