@@ -5,7 +5,7 @@
  *
  * Requred config options:
  *
- * --table
+ * --name
  *
  */
 class Minion_Task_Autogen_Model extends Minion_Task {
@@ -17,7 +17,7 @@ class Minion_Task_Autogen_Model extends Minion_Task {
 	 */
 	protected $_config = array
 	(
-		'table'
+		'name'
 	);
 
 	/**
@@ -118,9 +118,9 @@ class Minion_Task_Autogen_Model extends Minion_Task {
 
 	public function execute(array $config)
 	{
-		$config['table'] = explode(',', $config['table']);
+		$config['name'] = explode(',', $config['name']);
 
-		foreach ($config['table'] as $name)
+		foreach ($config['name'] as $name)
 		{
 			$rules = $filters = array();
 
