@@ -10,6 +10,8 @@ I use them to automatically generate:
 * Form views,
 * Models
 
+## Forms
+
 It's no secret that within the same site many forms run on similar principles,
 which means they can be easily and automatically generate. Ok, look this:
 
@@ -17,6 +19,8 @@ which means they can be easily and automatically generate. Ok, look this:
 
 I think is not needed further explanations.
 File will be created in `APPPATH/views/somefile.php`.
+
+## Controllers
 
 With the controller is also simple:
 
@@ -26,7 +30,9 @@ Or, if you need to create multiple controllers:
 
 `minion autogen:controller --name=main,feedback,news,articles --actions=index --extends=controller_template_page`
 
-Awesome! Now to the fun - models. Suppose we have a table of `categories`,
+## Models
+
+Now to the fun - models. Suppose we have a table of `categories`,
 it has a lot of fields, and we need to create a model. Of course,
 we can do it manually ... and can be done automatically and avoid routine.
 
