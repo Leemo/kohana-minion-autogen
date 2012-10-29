@@ -1,23 +1,18 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 /**
- * Creates a new model from table
- *
- * Requred config options:
- *
- * --name
- *
+ * Creates a new model (or several models) from database
  */
-class Minion_Task_Autogen_Model extends Minion_Task {
+class Task_Autogen_Model extends Minion_Task {
 
 	/**
 	 * An array of config options that this task can accept
 	 *
 	 * @var array
 	 */
-	protected $_config = array
+	protected $_dafaults = array
 	(
-		'name'
+		'name' => NULL
 	);
 
 	/**
@@ -116,11 +111,12 @@ class Minion_Task_Autogen_Model extends Minion_Task {
 		'floatval'   => 'array(\'floatval\')',
 	);
 
-	public function execute(array $config)
+	protected function _execute(array $params)
 	{
-		$config['name'] = explode(',', $config['name']);
+		$params['name'] = Minion_CLI::read('Model name (or several names, separated by commas)');
+		$params['name'] = explode(',', $params['name']);
 
-		foreach ($config['name'] as $name)
+		foreach ($params['name'] as $name)
 		{
 			$rules = $filters = array();
 
@@ -217,17 +213,21 @@ class Minion_Task_Autogen_Model extends Minion_Task {
 				}
 			}
 
-			$contents = View::factory('minion/task/autogen/model')
+			$contents = View::factory('minion/autogen/model')
 				->set('name', $name)
 				->bind('filters', $filters)
 				->bind('rules', $rules);
+
+			$name = str_replace('_', ' ', $name);
+			$name = UTF8::ucwords($name);
+			$name = str_replace(' ', DIRECTORY_SEPARATOR, $name);
 
 			try
 			{
 				$filename = APPPATH
 					.'classes'.DIRECTORY_SEPARATOR
-					.'model'.DIRECTORY_SEPARATOR
-					.str_replace('_', DIRECTORY_SEPARATOR, $name);
+					.'Model'.DIRECTORY_SEPARATOR
+					.$name;
 
 				Autogen::write($filename, $contents);
 			}

@@ -7,7 +7,7 @@
 			<?php echo '<?php echo Form::label(\''.$name.'\', __(\''.UTF8::ucfirst($name).'\')) ?>' ?>
 		</dt>
 		<dd<?php echo '<?php if (isset($errors[\''.$name.'\'])): ?>' ?> class="error"<?php echo '<?php endif ?>' ?>>
-			<?php echo '<?php echo '.View::factory('minion/task/autogen/form/'.$type)->bind('name', $name).' ?>' ?>
+			<?php echo '<?php echo '.View::factory('minion/autogen/form/'.$type)->bind('name', $name).' ?>' ?>
 
 <?php echo '<?php if (isset($errors[\''.$name.'\'])): ?>' ?>
 

@@ -2,24 +2,18 @@
 
 /**
  * Creates a new form
- *
- * Requred config options:
- *
- * --filename
- * --fields
- *
  */
-class Minion_Task_Autogen_Form extends Minion_Task {
+class Task_Autogen_Form extends Minion_Task {
 
 	/**
-	 * An array of config options that this task can accept
+	 * An array of input params that this task can accept
 	 *
 	 * @var array
 	 */
-	protected $_config = array
+	protected $_params = array
 	(
-		'filename',
-		'fields'
+		'filename' => 'File path (from APPPATH/views/, for example: views/some/form)',
+		'fields'   => 'An array of fields, separated by commas (for example: name:text,password:password)'
 	);
 
 	/**
@@ -37,13 +31,18 @@ class Minion_Task_Autogen_Form extends Minion_Task {
 		'textarea'
 	);
 
-	public function execute(array $config)
+	protected function _execute(array $params)
 	{
-		$config['fields'] = explode(',', $config['fields']);
+		foreach ($this->_params as $param => $message)
+		{
+			$params[$param] = Minion_CLI::read($message);
+		}
+
+		$params['fields'] = explode(',', $params['fields']);
 
 		$fields = array();
 
-		foreach ($config['fields'] as $field)
+		foreach ($params['fields'] as $field)
 		{
 			list($name, $type) = explode(':', $field);
 
@@ -53,12 +52,12 @@ class Minion_Task_Autogen_Form extends Minion_Task {
 			}
 		}
 
-		$contents = View::factory('minion/task/autogen/form')
+		$contents = View::factory('minion/autogen/form')
 			->bind('fields', $fields);
 
 		try
 		{
-			$filename = APPPATH.'views'.DIRECTORY_SEPARATOR.$config['filename'];
+			$filename = APPPATH.'views'.DIRECTORY_SEPARATOR.$params['filename'];
 
 			Autogen::write($filename, $contents);
 		}
