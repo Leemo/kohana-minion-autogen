@@ -9,7 +9,7 @@ return array
 	'<?php echo addslashes($term) ?>' => array
 	(
 		'one'  => '<?php echo addslashes($data['translate']['one']) ?>',
-		'two'  => '<?php echo addslashes($data['translate']['two']) ?>',
+		'few'  => '<?php echo addslashes($data['translate']['few']) ?>',
 		'many' => '<?php echo addslashes($data['translate']['many']) ?>',
 	),
 <?php else: ?>
@@ -22,7 +22,7 @@ return array
 	//'<?php echo addslashes($term) ?>' => array
 	//(
 	//	'one'  => '<?php echo addslashes($term) ?>',
-	//	'two'  => '<?php echo addslashes($term) ?>',
+	//	'few'  => '<?php echo addslashes($term) ?>',
 	//	'many' => '<?php echo addslashes($term) ?>',
 	//),
 <?php endif ?>
