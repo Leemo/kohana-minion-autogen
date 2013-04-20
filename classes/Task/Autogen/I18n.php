@@ -102,7 +102,7 @@ class Task_Autogen_I18n extends Minion_Task {
 
 		file_put_contents($file, $contents);
 
-		return 'New i18n file '.$file.' successfully '.($created ? 'created' : 'updated');
+		return ($created ? 'New i18n' : 'I18n').' file '.$file.' successfully '.($created ? 'created' : 'updated');
 	}
 
 	/**
