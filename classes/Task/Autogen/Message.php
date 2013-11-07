@@ -123,7 +123,7 @@ class Task_Autogen_Message extends Minion_Task {
 	protected function _process_message_file($model, array $rules)
 	{
 		$messages_dir = APPPATH.'messages'.DIRECTORY_SEPARATOR;
-		$message_file = UTF8::strtolower(str_replace(array('Model_', '_'), array(NULL, DIRECTORY_SEPARATOR), $model));
+		$message_file = UTF8::strtolower(str_replace('Model_', NULL, $model));
 
 		$file = $messages_dir.$message_file;
 
