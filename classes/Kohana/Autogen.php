@@ -14,17 +14,23 @@ class Kohana_Autogen {
 	 *
 	 * @param   string  filename
 	 * @param   string  file contents
+	 * @param   boolean remove if exist
 	 * @return  void
 	 */
-	public static function write($filename, $contents)
+	public static function write($filename, $contents, $remove = FALSE)
 	{
 		$filename .= EXT;
 
 		if (is_file($filename))
 		{
-			throw new Kohana_Exception(__('File :filename already exist', array(
-				':filename' => $filename
-				)));
+			if ( ! $remove)
+			{
+				throw new Kohana_Exception(__('File :filename already exist', array(
+					':filename' => $filename
+					)));
+			}
+
+			unlink($filename);
 		}
 
 		$dir = pathinfo($filename, PATHINFO_DIRNAME);
