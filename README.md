@@ -9,13 +9,14 @@ I use them to automatically generate:
 * Controllers,
 * Form views,
 * Models
+* Messages
 
 ## Forms
 
 It's no secret that within the same site many forms run on similar principles,
 which means they can be easily and automatically generate. Ok, look this:
 
-`minion autogen:form --filename=somefile --fields=username:text,password:password,userinfo:textarea`
+`minion autogen:form`
 
 I think is not needed further explanations.
 File will be created in `APPPATH/views/somefile.php`.
@@ -24,11 +25,11 @@ File will be created in `APPPATH/views/somefile.php`.
 
 With the controller is also simple:
 
-`minion autogen:controller --name=good --actions=index,add,edit,delete --extends=controller_template_page`
+`minion autogen:controller`
 
 Or, if you need to create multiple controllers:
 
-`minion autogen:controller --name=main,feedback,news,articles --actions=index --extends=controller_template_page`
+`minion autogen:controller`
 
 ## Models
 
@@ -40,3 +41,11 @@ we can do it manually ... and can be done automatically and avoid routine.
 
 At the same time, table fields will be analyzed types automatically and taken
 into account in the filters and rules.
+
+## Messages
+
+See http://kohanaframework.org/3.3/guide/orm/validation#handling-validation-exceptions
+
+`minion autogen:message`
+
+Creates (or updates, if they already exist) message files.
