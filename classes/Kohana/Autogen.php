@@ -19,8 +19,6 @@ class Kohana_Autogen {
 	 */
 	public static function write($filename, $contents, $remove = FALSE)
 	{
-		$filename .= EXT;
-
 		if (is_file($filename))
 		{
 			if ( ! $remove)
