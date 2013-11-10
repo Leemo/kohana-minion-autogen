@@ -50,7 +50,7 @@ class Task_Autogen_I18n extends Minion_Task {
 		$parser = new PHPParser_Parser(new PHPParser_Lexer);
 
 		foreach ($this->_list_files(array('views', 'classes')) as $file)
-		{echo $file."\n";
+		{
 			$statements = $parser->parse(file_get_contents($file));
 
 			$terms = Arr::merge($terms, $this->_get_terms_from_statements($statements));
