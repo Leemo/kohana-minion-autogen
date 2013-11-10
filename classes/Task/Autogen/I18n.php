@@ -229,7 +229,7 @@ class Task_Autogen_I18n extends Minion_Task {
 
 		if (is_file($filename))
 		{
-			$exist_terms = require_once $filename;
+			$exist_terms = require $filename;
 		}
 
 		foreach (Arr::merge(array_keys($terms), array_keys($exist_terms)) as $term)
