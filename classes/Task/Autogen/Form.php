@@ -57,7 +57,7 @@ class Task_Autogen_Form extends Minion_Task {
 
 		try
 		{
-			$filename = APPPATH.'views'.DIRECTORY_SEPARATOR.$params['filename'];
+			$filename = APPPATH.'views'.DIRECTORY_SEPARATOR.$params['filename'].EXT;
 
 			Autogen::write($filename, $contents);
 		}

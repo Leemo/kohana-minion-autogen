@@ -45,7 +45,7 @@ class Task_Autogen_Controller extends Minion_Task {
 				$filename = APPPATH
 					.'classes'.DIRECTORY_SEPARATOR
 					.'Controller'.DIRECTORY_SEPARATOR
-					.$name;
+					.$name.EXT;
 
 				Autogen::write($filename, $contents);
 			}

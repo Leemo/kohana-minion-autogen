@@ -125,13 +125,13 @@ class Task_Autogen_Message extends Minion_Task {
 		$messages_dir = APPPATH.'messages'.DIRECTORY_SEPARATOR;
 		$message_file = UTF8::strtolower(str_replace('Model_', NULL, $model));
 
-		$file = $messages_dir.$message_file;
+		$file = $messages_dir.$message_file.EXT;
 
 		$exist_messages = array();
 
-		if (is_file($file.EXT))
+		if (is_file($file))
 		{
-			$exist_messages = require_once $file.EXT;
+			$exist_messages = require_once $file;
 		}
 
 		$messages = array();

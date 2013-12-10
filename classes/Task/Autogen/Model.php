@@ -227,7 +227,7 @@ class Task_Autogen_Model extends Minion_Task {
 				$filename = APPPATH
 					.'classes'.DIRECTORY_SEPARATOR
 					.'Model'.DIRECTORY_SEPARATOR
-					.$name;
+					.$name.EXT;
 
 				Autogen::write($filename, $contents);
 			}
